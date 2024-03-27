@@ -1,0 +1,32 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>blogger</title>
+    <link rel="stylesheet" href="{% static 'base.css' %}">
+</head>
+<body>
+    <header>
+        <a href="{% url 'home' %}">Blogger</a>
+        <a href="{% url 'home' %}">Home</a>
+        <a href="{% url 'blog_home_about' %}">About</a>
+    </header>
+
+    {% if user.is_authenticated %}
+        <p>Welcome {{ user.username}}</p>
+        <form method="post">
+          <p><a href="{% url 'logout_u' %}">Logout</a></p>
+        </form>
+
+    {% else %}
+        <p><a href="{% url 'login'%}">Login to website</a></p>
+        <p><a href="{% url 'signup'%}">Sign up to website</a></p>
+    {% endif %}
+    </body>
+    {% block content %}
+    {% endblock content %}
+<footer>
+    <h3><a href="{% url 'new_post' %}">create a new post</a></h3>
+</footer>
+</html>

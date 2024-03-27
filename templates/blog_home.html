@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Home</title>
+</head>
+<body>
+  {% extends 'base.html' %}
+    {% block content %}
+
+      {% for post in posts %}
+        <h2><a href="{% url 'blog_home_detailed_view' post.pk %}">{{ post.title }}</a></h2>
+        <p>{{ post.summary}}</p>
+        <p>{{ post.text | slice:'200' }}</p>
+      {% endfor %}
+
+    {% endblock content %}
+
+</body>
+</html>
+
+
